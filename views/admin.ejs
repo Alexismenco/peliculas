@@ -1,0 +1,96 @@
+<%- include("./partials/head") %> 
+<!-- carga de css -->
+<link rel="stylesheet" href="css/autenticacion.css">
+<%- include("./partials/closeHead") %>
+<%- include("./partials/header") %> 
+
+<div class="w-75 m-auto contenedor mt-3">
+    <h1>Admin</h1>
+    <h2>Panel administrador de <%= usuario.nombre %> </h2>
+    <%- include("./partials/botonLogout") %> 
+
+    <br>
+    <main class=" formularioSesion contenedor w-100 m-auto mt-5">
+          <form id="formularioadmin">
+        
+            <div class="form-floating">
+              <input type="email" name="email" class="form-control mb-3" id="floatingInput" placeholder="name@example.com">
+              <label for="floatingInput">Email</label>
+            </div>
+      
+            <div class="form-floating">
+              <input type="text" name="username" class="form-control mb-3" id="username" placeholder="username">
+              <label for="floatingInput">Username</label>
+            </div>
+      
+            <div class="form-floating">
+              <input type="text" name="nombre" class="form-control mb-3" id="nombre" placeholder="Jose  Marin">
+              <label for="floatingInput">Nombre</label>
+            </div>
+
+            <div class="form-floating">
+                <select name="rol" id="">
+                    <option value="2">Usuario</option>
+                    <option value="1">Administrador</option>
+                </select>
+            </div>
+
+            <br>
+      
+            <div class="form-floating">
+              <input type="password" name="password" class="form-control mb-2" id="floatingPassword" placeholder="Password">
+              <label for="floatingPassword">Password</label>
+            </div>
+      
+            <div class="form-floating">
+              <input type="password" name="password2" class="form-control mb-2" id="floatingPassword" placeholder="Password">
+              <label for="floatingPassword">Confirmar password</label>
+            </div>
+              <br><br>
+
+           <p class="esconderError textoError" id="errormsg">Password no coinciden</p>
+      
+           <div class="alert alert-danger esconderError w-75 m-auto mt-2 mb-3" role="alert" id="msgError">
+            Mensaje
+          </div>
+      
+            <input name="crearuser" class="w-50 btn btn-lg btn-info mb-3" type="submit" value="Crear usuario" >
+
+          </form>
+        </main>
+        <br><br>
+</div>
+<br><br>
+
+
+<div class="w-75 m-auto contenedor table-responsive pt-3">
+    <h4 class="text-center ">Usuarios</h4>
+    <p>***Puedes modificar el correo, nombre y/o rol directamente y guardar o borrar un usuario***</p><br><br>
+    <table class="table w-100 table-bordered table-hover" >
+      <tr>
+        <td class="bg-dark text-white">Correo</td>
+        <td class="bg-dark text-white">Nombre</td>
+        <td class="bg-dark text-white" >Rol</td>
+        <td class="bg-dark text-white">Editar</td>
+        <td class="bg-dark text-white">Eliminar</td>
+    
+      </tr>
+    <% for(i=0;i<usuarios.length;i++){ %>
+        <form action="/putuser" method="post" id="form">
+          <tr>
+            <td><input name="email" type="text" class="btn btn-white" value="<%= usuarios[i].dataValues.email %>" ></td>
+            <td><input name="usuario" type="text" class="btn btn-white" value="<%= usuarios[i].dataValues.username %>" ></td>
+            <td><input name="rol" type="text" class="btn btn-white" value="<%= usuarios[i].dataValues.idRol==2?"Usuario":"Administrador" %>"></td>
+            <input name="usuario" type="text" class="btn btn-white" value="<%= usuarios[i].dataValues.username %>" hidden>
+            <td><input name="userpost" class="btn btn-primary mt-1 mb-1" value="Guardar" type="submit"></td>
+            <td><input name="userdelete" class="btn btn-danger" value="Borrar" type="submit"></td>
+          </tr>
+            <br>
+        </form>
+    <% } %>  
+  </table>
+</div>
+<!-- carga de js -->
+<script src="js/useradmin.js"></script>
+<!-- <script src="js/postuser.js"></script> -->
+<%- include("./partials/foot") %> 

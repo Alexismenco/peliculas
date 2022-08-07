@@ -1,0 +1,10 @@
+.contenedor{
+    background-color: white;
+    border: 1px black;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px black;
+}
+
+body{
+    background: black;
+}

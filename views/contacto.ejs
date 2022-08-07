@@ -1,0 +1,28 @@
+<%- include("./partials/head") %> 
+<!-- carga de css -->
+<link rel="stylesheet" href="css/autenticacion.css">
+<%- include("./partials/closeHead") %>
+<%- include("./partials/header") %> 
+
+<div class="w-75 m-auto contenedor mt-3">
+    <h1>Contacto</h1>
+    
+    <%- include("./partials/botonLogout") %> 
+
+</div class="w-75 m-auto contenedor mt-3 bg-dark text-white text-center">
+    <form class="mt-3" action="/contacto" method="post">
+        <span class="text-white" ><b>Nombre</b></span><br>
+        <input class="mb-2 form-control w-50 m-auto" type="text" name="nombre" id="" placeholder="Pedro" required><br>
+        <span  class="text-white"><b>Asunto</b></span><br>
+        <input name="asunto" class="mb-2 form-control w-50 m-auto" type="text" placeholder="Asunto" required><br>
+        <span class="text-white"><b>Comentario</b></span><br>
+        <textarea class="form-control w-50 m-auto" name="comentario" id="" cols="30" placeholder="Comentario" rows="10" required></textarea><br>
+        <input name="contacto" class="btn btn-info" type="submit" value="Enviar">
+
+    </form>
+ 
+<div>
+
+</div>
+<!-- <script src="js/postuser.js"></script> -->
+<%- include("./partials/foot") %> 

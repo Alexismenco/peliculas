@@ -1,0 +1,87 @@
+<%- include("./partials/head") %> 
+<!-- carga de css -->
+<%- include("./partials/closeHead") %>
+<%- include("./partials/header") %> 
+
+<div class="w-75 m-auto contenedor mt-3">
+    <h2>Panel administrador películas de <%= admin.nombre %> </h2>
+    <%- include("./partials/botonLogout") %> 
+</div>
+
+<div class="m-auto bg-dark text-white w-75 rounded border border-info mt-3">
+    <h1>
+        Añadir Película
+    </h1>
+
+    <form class="m-auto" action="/peliculasadmin" method="post">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Nombre</label>
+          <input name="nombre" type="text" class="form-control m-auto w-50" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Pelicula">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Año</label>
+          <input name="age" type="text" class="form-control m-auto  w-50" id="exampleInputPassword1" placeholder="Año">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">Director</label>
+            <input name="director" type="text" class="form-control m-auto w-50" id="exampleInputPassword1" placeholder="Director">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">Casting</label>
+            <input name="casting" type="text" class="form-control m-auto w-50" id="exampleInputPassword1" placeholder="Actores">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">Sinopsis</label>
+            <input name="sinopsis" type="text" class="form-control m-auto w-50" id="exampleInputPassword1" placeholder="Sinopsis">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">Genero</label>
+            <input name="genero" type="text" class="form-control m-auto w-50" id="exampleInputPassword1" placeholder="Genero">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">Trailer</label>
+            <input name="trailer" type="text" class="form-control m-auto w-50" id="exampleInputPassword1" placeholder="trailer">
+          </div>
+        
+        <button type="submit" class="btn mt-3 mb-3 btn-info">Guardar</button>
+      </form>
+
+</div>
+
+<div class="m-auto bg-dark text-white w-75 rounded border border-info mt-3">
+  <h2 class="m-auto mt-4">Peliculas</h2>
+
+  <% for(i=0;i<peliculas.length;i++){ %> 
+    <div class="col-md-6 m-auto mt-5">
+      <div class="row g-0 border border-info rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary"> <b>Genero: </b><%= peliculas[i].genero%> </strong>
+          <h3 class="mb-0"> <%= peliculas[i].nombre%> </h3>
+          <div class="mb-1 text-muted"><b>Año: </b> <%= peliculas[i].year%> </div>
+            <a href="<%= peliculas[i].trailer%>" class="card-text mb-auto"><b>Ver trailer</b>  </a>
+            <form action="editarpelicula" method="GET">
+              <input name="idpelicula" type="text" value=" <%= peliculas[i].id %> " hidden>
+              <input name="editarpelicula" type="submit" value="Ver más..." class="btn mt-3 mb-3 btn-warning">
+            </form>
+            <form action="borrarpelicula" method="post">
+              <input name="idpelicula" type="text" value=" <%= peliculas[i].id %> " hidden>
+              <input name="borrarpelicula" type="submit" value="Borrar" class="btn mt-3 mb-3 btn-danger">
+            </form>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+        </div>
+      </div>
+    </div>
+
+    <% } %> 
+</div>
+<!-- carga de js -->
+<%- include("./partials/foot") %> 

@@ -1,0 +1,18 @@
+.logo{
+    width: 200px;
+}
+
+.formularioSesion{
+     max-width: 400px;
+     padding: 25px;
+}
+.esconderError{
+    display: none;
+}
+
+.mostrarError{
+    display: block;
+}
+.textoError{
+    color: red;
+}

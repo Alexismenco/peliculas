@@ -1,0 +1,38 @@
+<%- include("./partials/head") %> 
+<!-- carga de css -->
+<link rel="stylesheet" href="css/autenticacion.css">
+
+<%- include("./partials/closeHead") %>
+
+<main class=" contenedor formularioSesion w-100 m-auto mt-5">
+  <a class="w-75 btn btn-lg mb-3" href="/home" >⬅️ Volver a inicio</a>
+    <form action="/login" method="post">
+      <img class="mb-4 logo" src="img/logo.png" alt="">
+      <h1 class="h3 mb-3 fw-normal">Iniciar sesión</h1>
+  
+      <div class="form-floating">
+        <input type="email" name="email" class="form-control mb-3" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Email</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" name="password" class="form-control mb-2" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+      </div>
+  
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Recordarme
+        </label>
+      </div>
+      <div class="alert alert-danger esconderError w-75 m-auto mt-2 mb-3" role="alert" id="msgError">
+        Mensaje
+      </div>
+      <button class="w-100 btn btn-lg btn-info mb-3" type="submit">Ingresar</button>
+      <a class="w-100 btn btn-lg btn-warning" href="/register" >Registrarse</a>
+      <p class="mt-5 mb-3 text-muted">© by Mer</p>
+    </form>
+  </main>
+
+<!-- carga de js -->
+<script src="js/getToken.js"></script>
+<%- include("./partials/foot") %> 

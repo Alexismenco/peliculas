@@ -1,0 +1,48 @@
+<%- include("./partials/head") %> 
+<!-- carga de css -->
+<link rel="stylesheet" href="css/autenticacion.css">
+<%- include("./partials/closeHead") %>
+<%- include("./partials/header") %> 
+
+<div class="w-75 m-auto contenedor mt-3 ">
+    <h3>Editar pelicula</h3>
+
+    <%- include("./partials/botonLogout") %> 
+
+</div>
+<br><br>
+
+<div class="w-75 m-auto contenedor table-responsive pt-3 bg-dark text-white">
+    <% for(i=0;i<pelicula.length;i++){ %>
+        <form action="/editarpelicula" method="post" id="form" class="bg-dark ">
+            <div class="card text-center bg-dark ">
+                <div class="card-header">
+                    <input name="id" type="text" class="btn btn-white text-white" value="<%= pelicula[i].id %>" hidden>
+                    <span>Nombre: </span>
+                    <input name="nombre" type="text" class="btn btn-white text-white" value="<%= pelicula[i].nombre %>" >
+                </div>
+                <div class="card-body bg-dark  ">
+                    <span>Genero: </span>
+                    <input name="genero" type="text" class="btn btn-white mb-2 text-white" value="<%= pelicula[i].genero %>" ><br>
+                    <span>Año: </span>
+                    <input name="year" type="text" class="btn btn-white mb-2 text-white" value="<%= pelicula[i].year %>"><br>
+                    <span>Trailer: </span>
+                    <input name="trailer" type="text" class="btn btn-white mb-2 text-white" value="<%= pelicula[i].trailer %>" ><br>
+                    <span>Director: </span>
+                    <input name="director" type="text" class="btn btn-white mb-2 text-white" value="<%= pelicula[i].director %>" ><br>
+                    <span>Casting: </span>
+                    <input name="casting" type="text" class="btn btn-white mb-2 text-white" value="<%= pelicula[i].casting %>" ><br>
+                    <span>Sinopsis: </span><br>
+                    <textarea class="bg-dark text-white" name="sinopsis" id="" cols="60" rows="6"><%= pelicula[i].sinopsis %></textarea><br>
+                    <input name="peliculaput" class="btn btn-warning mt-1 mb-1" value="Guardar" type="submit">
+                </div>
+              </div> 
+            <br>
+        </form>
+    <% } %>  
+  </table>
+</div>
+
+
+<!-- <script src="js/postuser.js"></script> -->
+<%- include("./partials/foot") %> 
