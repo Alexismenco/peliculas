@@ -12,7 +12,7 @@ module.exports = {
       },
       emailUsuario: {
         type: Sequelize.STRING,
-        primaryKey:true,
+        primaryKey:false,
         references:{
           model:"Usuarios",
           key:"email"

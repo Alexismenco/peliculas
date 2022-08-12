@@ -17,23 +17,8 @@
             <h3 class="mb-0"> <%= peliculas[i].nombre%> </h3>
             <div class="mb-1 text-muted"><b>Año: </b> <%= peliculas[i].year%> </div>
             <a href="<%= peliculas[i].trailer%>" class="card-text mb-auto"><b>Ver trailer</b>  </a>
-            <p>Director: <%= peliculas[i].director %> </p>
 
-            <form action="calificacion" method="post">
-              <input name="idpelicula" type="text" value="<%= peliculas[i].id %>" hidden>   
-       
-                <input class="bg-transparent border-0" id="radio1" type="submit" name="c1" value="⭐" >
-        
-                <input class="bg-transparent border-0" id="radio2" type="submit" name="c2" value="⭐" >
-     
-                <input class="bg-transparent border-0" id="radio3" type="submit" name="c3" value="⭐" >
-          
-                <input class="bg-transparent border-0" id="radio4" type="submit" name="c4" value="⭐" >
-                
-                <input class="bg-transparent border-0" id="radio5" type="submit" name="c5" value="⭐">
-            </form>
           </div>
-
           <div class="col-auto d-none d-lg-block">
             <img class="bd-placeholder-img" width="200" height="250"  role="img" src=" <%= peliculas[i].img==undefined?'../img/noimg.png':'../img/'+peliculas[i].img %>  " alt="">
 
@@ -43,5 +28,7 @@
   
       <% } %> 
   </div>
+  
 
+<!-- <script src="js/postuser.js"></script> -->
 <%- include("./partials/foot") %> 

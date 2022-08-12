@@ -3,8 +3,9 @@ const db =require("../models");
 require('dotenv').config();
 
 var contacto= async function(req,res){
+    // console.log(req)
    
-    res.render("contacto",{usuario:req.usuario})
+    res.render("contacto",{usuario:req.datos})
     
 }
 

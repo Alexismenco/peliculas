@@ -2,14 +2,14 @@
 <!-- carga de css -->
 <link rel="stylesheet" href="css/autenticacion.css">
 <%- include("./partials/closeHead") %>
-<%- include("./partials/header") %> 
+<%- usuario?include("./partials/headeruser"):include("./partials/header") %> 
 
-<div class="w-75 m-auto contenedor mt-3">
-    <h1>Contacto</h1>
-    
-    <%- include("./partials/botonLogout") %> 
+<div class="w-75 m-auto contenedor mt-3 bg-black text-white">
+    <h3 >Comentarios o sugerencias</h3>
 
-</div class="w-75 m-auto contenedor mt-3 bg-dark text-white text-center">
+</div>
+ 
+<div>
     <form class="mt-3" action="/contacto" method="post">
         <span class="text-white" ><b>Nombre</b></span><br>
         <input class="mb-2 form-control w-50 m-auto" type="text" name="nombre" id="" placeholder="Pedro" required><br>
@@ -20,9 +20,5 @@
         <input name="contacto" class="btn btn-info" type="submit" value="Enviar">
 
     </form>
- 
-<div>
-
 </div>
-<!-- <script src="js/postuser.js"></script> -->
 <%- include("./partials/foot") %> 

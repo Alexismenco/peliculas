@@ -2,13 +2,10 @@
 <!-- carga de css -->
 <link rel="stylesheet" href="css/autenticacion.css">
 <%- include("./partials/closeHead") %>
-<%- include("./partials/header") %> 
+<%- usuario?include("./partials/headeruser"):include("./partials/header") %> 
 
-<div class="w-75 m-auto contenedor mt-3 ">
+<div class="w-75 m-auto contenedor mt-3 bg-black text-white">
     <h3>Editar pelicula</h3>
-
-    <%- include("./partials/botonLogout") %> 
-
 </div>
 <br><br>
 
@@ -41,7 +38,20 @@
         </form>
     <% } %>  
   </table>
+</div><br>
+
+<div>
+    <h3 class="text-white">Agregar imagen a esta pelicula</h3>
+    <form action="agregarimg" method="post" enctype="multipart/form-data">
+        <% for(i=0;i<pelicula.length;i++){ %>
+            <input name="id" type="text" class="btn btn-white text-white" value="<%= pelicula[i].id %>" hidden>
+        <input class="btn btn-warning" type="file" name="img" id="">
+        <input class="btn btn-success" type="submit" id="" value="Guardar imagen">
+        <% } %> 
+    </form>
+    
 </div>
+<br><br>
 
 
 <!-- <script src="js/postuser.js"></script> -->

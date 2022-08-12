@@ -1,0 +1,43 @@
+<%- include("./partials/head") %> 
+<!-- carga de css -->
+<link rel="stylesheet" href="css/autenticacion.css">
+<%- include("./partials/closeHead") %>
+<%- usuario?include("./partials/headeruser"):include("./partials/header") %> 
+
+<div class="w-75 m-auto contenedor mt-3 bg-black text-white">
+    <h3 >Pelicula</h3>
+</div><br><br>
+<% for(i=0;i<pelicula.length;i++){ %> 
+<div class="card m-auto bg-black text-white" style="width: 18rem;">
+    <img src="<%= pelicula[i].img==undefined?'../img/noimg.png':'../img/'+pelicula[i].img %>" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= pelicula[i].nombre %> </h5>
+      <p class="card-text"><%= pelicula[i].sinopsis %></p>
+      <p class="text-info"><b>Año: </b><%= pelicula[i].year %></p>
+      <p><b>Casting: </b><%= pelicula[i].casting %></p>
+      <p><b>Genero: </b><%= pelicula[i].genero %></p>
+      <a class="btn btn-primary" href="<%= pelicula[i].trailer %>">Ver trailer</a><br>
+     
+    </div>
+  </div>
+  <br>
+  <div>
+    <h4 class="text-white">Vuelve a calificar</h4>
+    <form action="recalificacion" method="post">
+        <input name="idpelicula" type="text" value="<%= pelicula[i].id %>" hidden>   
+ 
+          <input class="bg-transparent border-0" id="radio1" type="submit" name="c1" value="⭐" >
+  
+          <input class="bg-transparent border-0" id="radio2" type="submit" name="c2" value="⭐" >
+
+          <input class="bg-transparent border-0" id="radio3" type="submit" name="c3" value="⭐" >
+    
+          <input class="bg-transparent border-0" id="radio4" type="submit" name="c4" value="⭐" >
+          
+          <input class="bg-transparent border-0" id="radio5" type="submit" name="c5" value="⭐">
+      </form>
+  </div>
+<% } %> 
+
+
+<%- include("./partials/foot") %> 

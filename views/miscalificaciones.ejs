@@ -1,0 +1,33 @@
+<%- include("./partials/head") %> 
+<!-- carga de css -->
+<link rel="stylesheet" href="css/autenticacion.css">
+<%- include("./partials/closeHead") %>
+<%- usuario?include("./partials/headeruser"):include("./partials/header") %> 
+
+<div class="w-75 m-auto contenedor mt-3 bg-black text-white">
+    <h3 >Mis calificaciones</h3>
+</div>
+
+<table class="table w-75 m-auto table-bordered table-hover" >
+    <tr>
+      <td class="bg-dark text-white">Pelicula</td>
+      <td class="bg-dark text-white">⭐Calificacion⭐</td>
+      <td class="bg-dark text-white">Ver pelicula</td>
+    </tr>
+  <% for(i=0;i<misCalificaciones.length;i++){ %>
+      
+        <tr>
+          <td class="text-white"><%= misCalificaciones[i].nombre %> </td>
+          <td class="text-white"><%= misCalificaciones[i].calificacion +' Estrellas' %></td>
+          <form action="vermasuser" method="post">
+            <input name="idPelicula" type="text" value=" <%= misCalificaciones[i].idPelicula %> " hidden>
+            <td class="text-white"><input class="btn bg-transparent border-0 text-info" type="submit" value="Ver más"></td>
+          </form>
+          </tr>
+          <br>
+     
+  <% } %>  
+</table>
+
+
+<%- include("./partials/foot") %> 

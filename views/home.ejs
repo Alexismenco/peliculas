@@ -19,6 +19,7 @@
             <a href="<%= peliculas[i].trailer%>" class="card-text mb-auto"><b>Ver trailer</b>  </a>
             <p>Director: <%= peliculas[i].director %> </p>
 
+
             <form action="calificacion" method="post">
               <input name="idpelicula" type="text" value="<%= peliculas[i].id %>" hidden>   
        
@@ -43,5 +44,7 @@
   
       <% } %> 
   </div>
+  
 
+<!-- <script src="js/postuser.js"></script> -->
 <%- include("./partials/foot") %> 

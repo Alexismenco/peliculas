@@ -1,5 +1,8 @@
 // carga de modelo
 const db =require('../models');
+const { Op, sequelize } = require("sequelize");
+const fs = require('fs');
+
 
 const pelisAdmin = async function(req,res){
     let peliculas;
@@ -10,14 +13,23 @@ const pelisAdmin = async function(req,res){
         console.log("Error en la creación: " + error.message)
     }
     
-    res.render("peliculasadmin",{peliculas:peliculas,admin:req.datos});
+    const listaArchivos=fs.readdirSync("public/img/");
+    let archivo=listaArchivos.filter(a=>{return peliculas.find(b=>{if(b.id==a.split(".")[0]){return b.img=a}})})
+    res.render("peliculasadmin",{peliculas:peliculas,admin:req.datos,usuario:req.datos});
 }
 
 const peliculas = async function(req,res){
+    var idMax;
+    try{
+        idMax = await db.Pelicula.max('id');
+        console.log("Datos guardatos correctamente");
+    } catch(error){
+        console.log("Error en la creación: " + error.message)
+    }
     let pelicula=req.body;
-
     try{
         await db.Pelicula.create({
+            id:idMax+1,
             nombre:pelicula.nombre,
             year:pelicula.age,
             director:pelicula.director,
@@ -32,6 +44,8 @@ const peliculas = async function(req,res){
     } catch(error){
         console.log("Error en la creación: " + error.message)
     }
+    
+
     res.redirect("/peliculasadmin")
 }
 

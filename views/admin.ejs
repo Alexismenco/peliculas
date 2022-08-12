@@ -2,13 +2,11 @@
 <!-- carga de css -->
 <link rel="stylesheet" href="css/autenticacion.css">
 <%- include("./partials/closeHead") %>
-<%- include("./partials/header") %> 
+<%- usuario?include("./partials/headeruser"):include("./partials/header") %> 
 
 <div class="w-75 m-auto contenedor mt-3">
-    <h1>Admin</h1>
-    <h2>Panel administrador de <%= usuario.nombre %> </h2>
-    <%- include("./partials/botonLogout") %> 
-
+    <h1>Panel administrador</h1>
+    <h2>Bienvenid@ <%= usuario.nombre %> </h2>
     <br>
     <main class=" formularioSesion contenedor w-100 m-auto mt-5">
           <form id="formularioadmin">

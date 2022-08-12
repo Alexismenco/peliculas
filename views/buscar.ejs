@@ -1,26 +1,29 @@
 <%- include("./partials/head") %> 
-
+<!-- carga de css -->
+<link rel="stylesheet" href="css/autenticacion.css">
 <%- include("./partials/closeHead") %>
 <%- usuario?include("./partials/headeruser"):include("./partials/header") %> 
 
-<div class="w-75 m-auto contenedor mt-3 bg-black text-white">
-    <h1>Peliculas</h1>
-</div>
+<div class="w-75 m-auto contenedor mt-3">
+    <h1>Resultado</h1>
+    <br>
+  </div>
+  <br>
 
-<div class="m-auto bg-dark text-white w-75 rounded border border-info mt-3">
+  <div class="m-auto bg-dark text-white w-75 rounded border border-info mt-3">
   
-    <% for(i=0;i<peliculas.length;i++){ %> 
+    <% for(i=0;i<busqueda.length;i++){ %> 
       <div class="col-md-6 m-auto mt-5">
         <div class="row g-0 border border-info rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
           <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-primary"> <b>Genero: </b><%= peliculas[i].genero%> </strong>
-            <h3 class="mb-0"> <%= peliculas[i].nombre%> </h3>
-            <div class="mb-1 text-muted"><b>Año: </b> <%= peliculas[i].year%> </div>
-            <a href="<%= peliculas[i].trailer%>" class="card-text mb-auto"><b>Ver trailer</b>  </a>
-            <p>Director: <%= peliculas[i].director %> </p>
+            <strong class="d-inline-block mb-2 text-primary"> <b>Genero: </b><%= busqueda[i].genero%> </strong>
+            <h3 class="mb-0"> <%= busqueda[i].nombre%> </h3>
+            <div class="mb-1 text-muted"><b>Año: </b> <%= busqueda[i].year%> </div>
+            <a href="<%= busqueda[i].trailer%>" class="card-text mb-auto"><b>Ver trailer</b>  </a>
+            <p>Director: <%= busqueda[i].director %> </p>
 
             <form action="calificacion" method="post">
-              <input name="idpelicula" type="text" value="<%= peliculas[i].id %>" hidden>   
+              <input name="idpelicula" type="text" value="<%= busqueda[i].id %>" hidden>   
        
                 <input class="bg-transparent border-0" id="radio1" type="submit" name="c1" value="⭐" >
         
@@ -35,7 +38,7 @@
           </div>
 
           <div class="col-auto d-none d-lg-block">
-            <img class="bd-placeholder-img" width="200" height="250"  role="img" src=" <%= peliculas[i].img==undefined?'../img/noimg.png':'../img/'+peliculas[i].img %>  " alt="">
+            <img class="bd-placeholder-img" width="200" height="250"  role="img" src=" <%= busqueda[i].img==undefined?'../img/noimg.png':'../img/'+busqueda[i].img %>  " alt="">
 
           </div>
         </div>

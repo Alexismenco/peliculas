@@ -12,12 +12,11 @@ var editarPelicula= async function(req,res){
         console.log("Error en la consulta: "+ error.message);
         
     }
-    res.render("editarpelicula",{pelicula:pelicula})
+    res.render("editarpelicula",{pelicula:pelicula,usuario:req.datos})
 }
 
 var peliculaPut = async function(req,res){
     var pelicula = req.body
-    console.log(req.kHeaders)
     try{
         await db.Pelicula.update({
             nombre:pelicula.nombre,
